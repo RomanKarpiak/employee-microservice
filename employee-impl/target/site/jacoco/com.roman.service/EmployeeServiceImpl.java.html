@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">employees-service</a> &gt; <a href="index.source.html" class="el_package">com.roman.service</a> &gt; <span class="el_source">EmployeeServiceImpl.java</span></div><h1>EmployeeServiceImpl.java</h1><pre class="source lang-java linenums">package com.roman.service;
+
+import com.roman.dto.DepartmentDto;
+import com.roman.entity.Employee;
+import com.roman.exceptions.DepartmentNotFoundException;
+import com.roman.exceptions.EmployeeAlreadyExistsException;
+import com.roman.exceptions.EmployeeNotFoundException;
+import com.roman.exceptions.TwoHeadOfDepartmentException;
+import com.roman.mappers.DepartmentDtoSnapshotMapper;
+import com.roman.repo.DepartmentDtoSnapshotRepo;
+import com.roman.repo.EmployeeRepo;
+import com.roman.resource.feign.DepartmentsFeignClient;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
+
+@Service
+<span class="fc" id="L21">@RequiredArgsConstructor</span>
+public class EmployeeServiceImpl implements EmployeeService {
+
+    private final EmployeeRepo employeeRepo;
+    private final DepartmentsFeignClient feignClient;
+    private final DepartmentDtoSnapshotRepo dtoSnapshotRepo;
+    private final DepartmentDtoSnapshotMapper mapper;
+
+    @Override
+    public List&lt;Employee&gt; findAll() {
+<span class="fc" id="L31">        return employeeRepo.findAll();</span>
+    }
+
+    @Override
+    public Employee create(Employee employee) {
+<span class="fc" id="L36">        boolean isExist = employeeRepo.findByEmail(employee.getEmail()).isPresent();</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (isExist) {</span>
+<span class="fc" id="L38">            throw new EmployeeAlreadyExistsException();</span>
+        } else {
+<span class="fc" id="L40">            return employeeRepo.save(employee);</span>
+        }
+    }
+
+    @Override
+    public void update(Employee employee) {
+<span class="nc" id="L46">        employeeRepo.save(employee);</span>
+<span class="nc" id="L47">    }</span>
+
+    @Override
+    public Employee findById(Long employeeId) {
+<span class="fc" id="L51">        return employeeRepo.findById(employeeId)</span>
+<span class="pc" id="L52">                .orElseThrow(() -&gt; new EmployeeNotFoundException(employeeId));</span>
+    }
+
+    @Override
+    public void dismissal(Long employeeId) {
+<span class="fc" id="L57">        Employee employee = findById(employeeId);</span>
+<span class="fc" id="L58">        employee.setDepartmentId(null);</span>
+<span class="fc" id="L59">        employee.setDateOfDismissal(LocalDate.now());</span>
+<span class="fc" id="L60">        employeeRepo.save(employee);</span>
+<span class="fc" id="L61">    }</span>
+
+    @Override
+    public void transferEmployee(Long employeeId, Long departmentId) {
+<span class="fc" id="L65">        Employee employee = findById(employeeId);</span>
+<span class="fc" id="L66">        checkExistenceDepartments(departmentId);</span>
+<span class="fc" id="L67">        Employee headOfDepartment = employeeRepo.findByDepartmentIdAndIsHeadOfDepartmentTrue(departmentId);</span>
+<span class="pc bpc" id="L68" title="1 of 4 branches missed.">        if (headOfDepartment != null &amp;&amp; employee.isHeadOfDepartment()) {</span>
+<span class="fc" id="L69">            throw new TwoHeadOfDepartmentException();</span>
+        } else {
+<span class="fc" id="L71">            employee.setDepartmentId(departmentId);</span>
+<span class="fc" id="L72">            employeeRepo.save(employee);</span>
+        }
+<span class="fc" id="L74">    }</span>
+
+    @Override
+    @Transactional
+    public void transferAllEmployee(Long sourceDepartmentId, Long targetDepartmentId) {
+<span class="fc" id="L79">        checkExistenceDepartments(sourceDepartmentId);</span>
+<span class="fc" id="L80">        checkExistenceDepartments(targetDepartmentId);</span>
+<span class="fc" id="L81">        List&lt;Employee&gt; employeeList = getEmployeeListByDepartmentId(sourceDepartmentId);</span>
+<span class="pc" id="L82">        employeeList.forEach(employee -&gt; transferEmployee(employee.getId(), targetDepartmentId));</span>
+<span class="fc" id="L83">    }</span>
+
+    @Override
+    public Employee getEmployeesHead(Long employeeId) {
+<span class="fc" id="L87">        Employee employee = findById(employeeId);</span>
+<span class="fc" id="L88">        return employeeRepo.findByDepartmentIdAndIsHeadOfDepartmentTrue(employee.getDepartmentId());</span>
+    }
+
+    @Override
+    public Employee findByEmail(String email) {
+<span class="pc" id="L93">        return employeeRepo.findByEmail(email).orElseThrow(() -&gt; new EmployeeNotFoundException(email));</span>
+    }
+
+    @Override
+    public List&lt;Employee&gt; getEmployeeListByParam(boolean isHead) {
+<span class="fc" id="L98">        return employeeRepo.findByIsHeadOfDepartment(isHead);</span>
+    }
+
+    @Override
+    public List&lt;Employee&gt; getEmployeeListByDepartmentId(Long departmentId) {
+<span class="fc" id="L103">        return employeeRepo.findByDepartmentId(departmentId);</span>
+    }
+
+    private void checkExistenceDepartments(Long departmentId) {
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if (dtoSnapshotRepo.findByDepartmentId(departmentId) == null) {</span>
+<span class="fc" id="L108">            DepartmentDto departmentDto = feignClient.getDepartmentById(departmentId);</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">            if (departmentDto == null) {</span>
+<span class="fc" id="L110">                throw new DepartmentNotFoundException(departmentId);</span>
+            } else {
+<span class="fc" id="L112">                dtoSnapshotRepo.save(mapper.toDtoSnapshot(departmentDto));</span>
+            }
+        }
+<span class="fc" id="L115">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

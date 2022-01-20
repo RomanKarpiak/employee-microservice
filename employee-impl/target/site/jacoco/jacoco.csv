@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+employees-service,com.roman.validator,EmployeeDtoValidator,21,130,15,21,1,27,11,13,0,6
+employees-service,com.roman.service,ConsumerService,41,0,0,0,9,0,4,0,4,0
+employees-service,com.roman.service,EmployeeServiceImpl,22,164,1,9,2,37,5,16,4,12

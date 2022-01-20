@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.2.xsd">
+    <changeSet id="insert_data_into_employees" author="roman_karpiak">
+        <insert tableName="employees">
+            <column name="last_name" value="Бородин"/>
+            <column name="first_name" value="Александр"/>
+            <column name="patronymic" value="Порфирьевич"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1996-11-01"/>
+            <column name="phone" value="8-555-555-5554"/>
+            <column name="email" value="borodin@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-01"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="President"/>
+            <column name="salary" value="1000000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="1"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Римский-Корсаков"/>
+            <column name="first_name" value="Николай"/>
+            <column name="patronymic" value="Андреевич"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1991-05-05"/>
+            <column name="phone" value="8-(777)-777-7776"/>
+            <column name="email" value="korsakov@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief Finance Officer"/>
+            <column name="salary" value="700000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="2"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Сулимская"/>
+            <column name="first_name" value="Александра"/>
+            <column name="patronymic" value="Андреевна"/>
+            <column name="gender" value="FEMALE"/>
+            <column name="birthday" value="1952-05-05"/>
+            <column name="phone" value="8-789-777-7771"/>
+            <column name="email" value="sulim@gmail.com"/>
+            <column name="date_of_admission" value="2017-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Accountant"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="2"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Иванов"/>
+            <column name="first_name" value="Петр"/>
+            <column name="patronymic" value="Валерьевич"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1995-12-01"/>
+            <column name="phone" value="8-676-544-1553"/>
+            <column name="email" value="ivanov@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief Marketing Officer"/>
+            <column name="salary" value="700000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="3"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Рахманинов"/>
+            <column name="first_name" value="Сергей"/>
+            <column name="patronymic" value="Васильевич"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1993-08-03"/>
+            <column name="phone" value="8-533-444-4440"/>
+            <column name="email" value="rachmaninov@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief Production Officer"/>
+            <column name="salary" value="710000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="4"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Чайковский"/>
+            <column name="first_name" value="Петр"/>
+            <column name="patronymic" value="Ильич"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1990-01-01"/>
+            <column name="phone" value="8-375-333-3332"/>
+            <column name="email" value="chaikovsky@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief HR Officer"/>
+            <column name="salary" value="710000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="5"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Сулимский"/>
+            <column name="first_name" value="Никита"/>
+            <column name="patronymic" value="Андреевич"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1989-01-01"/>
+            <column name="phone" value="8-375-333-7856"/>
+            <column name="email" value="sulim_nikita@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief Account Officer"/>
+            <column name="salary" value="600000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="6"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Николаев"/>
+            <column name="first_name" value="Петр"/>
+            <column name="patronymic" value="Иванович"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1980-01-20"/>
+            <column name="phone" value="8-234-234-2321"/>
+            <column name="email" value="nicolaev@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief Sales Officer"/>
+            <column name="salary" value="710000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="7"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Максимов"/>
+            <column name="first_name" value="Максим"/>
+            <column name="patronymic" value="Максимович"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1978-11-11"/>
+            <column name="phone" value="8-996-111-1113"/>
+            <column name="email" value="maksimov@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief Advertising Officer"/>
+            <column name="salary" value="500000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="8"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Иванов"/>
+            <column name="first_name" value="Иван"/>
+            <column name="patronymic" value="Иванович"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1979-04-01"/>
+            <column name="phone" value="8-454-345-3532"/>
+            <column name="email" value="vanya1979@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief Recruit Officer"/>
+            <column name="salary" value="500000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="9"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Вагнер"/>
+            <column name="first_name" value="Игорь"/>
+            <column name="patronymic" value="Иванович"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1975-03-16"/>
+            <column name="phone" value="8-334-456-4662"/>
+            <column name="email" value="wagner@gmail.com"/>
+            <column name="date_of_admission" value="2014-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Chief Benefits Officer"/>
+            <column name="salary" value="500000"/>
+            <column name="is_head_of_department" value="true"/>
+            <column name="department_id" value="10"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Казанская"/>
+            <column name="first_name" value="Евгения"/>
+            <column name="patronymic" value="Андреевна"/>
+            <column name="gender" value="FEMALE"/>
+            <column name="birthday" value="1952-01-02"/>
+            <column name="phone" value="8-996-728-00-53"/>
+            <column name="email" value="kazan@gmail.com"/>
+            <column name="date_of_admission" value="2016-11-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Developer"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="3"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Веселая"/>
+            <column name="first_name" value="Александра"/>
+            <column name="patronymic" value="Петровна"/>
+            <column name="gender" value="FEMALE"/>
+            <column name="birthday" value="1980-05-05"/>
+            <column name="phone" value="8-777-777-7774"/>
+            <column name="email" value="fun@gmail.com"/>
+            <column name="date_of_admission" value="2017-10-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Developer"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="4"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Шутливый"/>
+            <column name="first_name" value="Федор"/>
+            <column name="patronymic" value="Петрович"/>
+            <column name="gender" value="FEMALE"/>
+            <column name="birthday" value="1981-05-05"/>
+            <column name="phone" value="8-888-777-7774"/>
+            <column name="email" value="fedor@gmail.com"/>
+            <column name="date_of_admission" value="2019-10-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Developer"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="5"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Шариков"/>
+            <column name="first_name" value="Михаил"/>
+            <column name="patronymic" value="Петрович"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1981-10-05"/>
+            <column name="phone" value="8-888-444-7774"/>
+            <column name="email" value="sharikov@gmail.com"/>
+            <column name="date_of_admission" value="2020-10-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Developer"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="5"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Неманский"/>
+            <column name="first_name" value="Николай"/>
+            <column name="patronymic" value="Александрович"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1979-05-05"/>
+            <column name="phone" value="8-888-999-7774"/>
+            <column name="email" value="nemansky@gmail.com"/>
+            <column name="date_of_admission" value="2019-08-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Developer"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="6"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Круглов"/>
+            <column name="first_name" value="Николай"/>
+            <column name="patronymic" value="Федорович"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1978-12-05"/>
+            <column name="phone" value="8-888-999-5574"/>
+            <column name="email" value="kruglov@gmail.com"/>
+            <column name="date_of_admission" value="2019-08-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Developer"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="6"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Пинская"/>
+            <column name="first_name" value="Светлана"/>
+            <column name="patronymic" value="Федоровна"/>
+            <column name="gender" value="FEMALE"/>
+            <column name="birthday" value="1978-10-05"/>
+            <column name="phone" value="8-888-123-5574"/>
+            <column name="email" value="pinskaya@gmail.com"/>
+            <column name="date_of_admission" value="2018-08-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Developer"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="8"/>
+        </insert>
+        <insert tableName="employees">
+            <column name="last_name" value="Новый"/>
+            <column name="first_name" value="Вячеслав"/>
+            <column name="patronymic" value="Федорович"/>
+            <column name="gender" value="MALE"/>
+            <column name="birthday" value="1975-10-05"/>
+            <column name="phone" value="8-998-123-5574"/>
+            <column name="email" value="newa@gmail.com"/>
+            <column name="date_of_admission" value="2018-04-02"/>
+            <column name="date_of_dismissal"/>
+            <column name="position" value="Developer"/>
+            <column name="salary" value="250000"/>
+            <column name="is_head_of_department" value="false"/>
+            <column name="department_id" value="8"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

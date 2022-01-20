@@ -1,0 +1,16 @@
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\dto\OnCreate.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\feign\config\DepartmentsFallbackConfig.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\dto\OnUpdate.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\EmployeeController.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\controlleradvice\EmployeesHystrixExceptionHandler.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\feign\fallback\FallbackException.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\controlleradvice\ApiErrorResponse.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\dto\EmployeeDto.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\feign\config\DepartmentsFeignConfig.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\dto\EmployeeBriefInfoDto.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\feign\DepartmentsFeignClient.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\controlleradvice\ControllerAdviceErrorHandling.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\feign\fallback\DepartmentsFallbackFactory.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\enums\Gender.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\resource\feign\fallback\DepartmentsFeignClientFallback.java
+C:\Users\roman\IdeaProjects\employees-microservice\employee-api\src\main\java\com\roman\dto\EmployeeFullInfoDto.java

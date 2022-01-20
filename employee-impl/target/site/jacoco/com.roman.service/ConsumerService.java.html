@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConsumerService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">employees-service</a> &gt; <a href="index.source.html" class="el_package">com.roman.service</a> &gt; <span class="el_source">ConsumerService.java</span></div><h1>ConsumerService.java</h1><pre class="source lang-java linenums">package com.roman.service;
+
+import com.roman.config.kafka.ConsumerKafkaProperties;
+import com.roman.dto.DepartmentDto;
+import com.roman.entity.DepartmentDtoSnapshot;
+import com.roman.mappers.DepartmentDtoSnapshotMapper;
+import com.roman.repo.DepartmentDtoSnapshotRepo;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+@Service
+<span class="nc" id="L14">@RequiredArgsConstructor</span>
+<span class="nc" id="L15">@Slf4j</span>
+public class ConsumerService {
+
+    private final DepartmentDtoSnapshotRepo dtoRepo;
+    private final DepartmentDtoSnapshotMapper snapshotMapper;
+
+    @KafkaListener(topics = {&quot;created-department&quot;}, groupId = ConsumerKafkaProperties.CONSUMER_GROUP_ID)
+    public void consumerMessage1(DepartmentDto dto) {
+<span class="nc" id="L23">        DepartmentDtoSnapshot snapshot = dtoRepo.save(snapshotMapper.toDtoSnapshot(dto));</span>
+<span class="nc" id="L24">        log.info(&quot;CONSUMER: We received and save a new DepartmentDto in departments_snapshot table!!!{}&quot;, dto);</span>
+<span class="nc" id="L25">        log.info(&quot;CONSUMER: Added SNAPSHOT:{}&quot;, snapshot);</span>
+<span class="nc" id="L26">    }</span>
+
+    @KafkaListener(topics = {&quot;deleted-department&quot;}, groupId = ConsumerKafkaProperties.CONSUMER_GROUP_ID)
+    public void consumerMessage2(DepartmentDto dto) {
+<span class="nc" id="L30">        dtoRepo.deleteByDepartmentId(dto.getId());</span>
+<span class="nc" id="L31">        log.info(&quot;CONSUMER: We received and deleted the DepartmentDto from departments_snapshot table!!!{}&quot;, dto);</span>
+<span class="nc" id="L32">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

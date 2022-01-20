@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.2.xsd">
+
+    <changeSet id="creating_the_employees_table" author="roman_karpiak">
+        <createTable tableName="employees">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(50)"/>
+            <column name="last_name" type="varchar(50)"/>
+            <column name="patronymic" type="varchar(50)"/>
+            <column name="gender" type="varchar(50)"/>
+            <column name="birthday" type="date"/>
+            <column name="phone" type="text"/>
+            <column name="email" type="text"/>
+            <column name="date_of_admission" type="date"/>
+            <column name="date_of_dismissal" type="date"/>
+            <column name="position" type="text"/>
+            <column name="salary" type="text"/>
+            <column name="is_head_of_department" type="boolean"/>
+            <column name="department_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="create_departments_snapshot_table" author="roman_karpiak">
+        <createTable tableName="departments_snapshot">
+            <column name="snapshot_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="true"/>
+            </column>
+            <column name="department_id" type="BIGINT"/>
+            <column name="department_name" type="varchar(50)"/>
+            <column name="creation_date" type="date"/>
+            <column name="main_department_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
