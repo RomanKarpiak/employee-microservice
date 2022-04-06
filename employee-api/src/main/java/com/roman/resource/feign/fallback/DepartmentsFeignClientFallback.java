@@ -1,8 +1,8 @@
 package com.roman.resource.feign.fallback;
 
-import com.roman.dto.DepartmentDto;
 import com.roman.resource.feign.DepartmentsFeignClient;
 import com.roman.resource.feign.fallback.exception.FallbackException;
+import dto.department.DepartmentDto;
 import feign.FeignException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

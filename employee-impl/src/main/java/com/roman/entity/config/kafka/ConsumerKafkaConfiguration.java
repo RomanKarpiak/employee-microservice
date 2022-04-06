@@ -1,7 +1,7 @@
-package com.roman.config.kafka;
+package com.roman.entity.config.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.roman.dto.DepartmentDto;
+import dto.department.DepartmentDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

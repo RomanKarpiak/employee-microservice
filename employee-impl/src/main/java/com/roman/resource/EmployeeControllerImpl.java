@@ -1,12 +1,12 @@
 package com.roman.resource;
 
-import com.roman.dto.EmployeeBriefInfoDto;
-import com.roman.dto.EmployeeDto;
-import com.roman.dto.EmployeeFullInfoDto;
 import com.roman.entity.Employee;
 import com.roman.mappers.EmployeeMapper;
 import com.roman.service.EmployeeService;
 import com.roman.validator.EmployeeDtoValidator;
+import dto.employee.EmployeeBriefInfoDto;
+import dto.employee.EmployeeDto;
+import dto.employee.EmployeeFullInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 

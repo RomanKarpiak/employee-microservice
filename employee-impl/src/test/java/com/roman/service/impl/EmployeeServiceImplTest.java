@@ -1,18 +1,25 @@
 package com.roman.service.impl;
 
-import com.roman.dto.DepartmentDto;
 import com.roman.entity.DepartmentDtoSnapshot;
 import com.roman.entity.Employee;
-import com.roman.enums.Gender;
-import com.roman.exceptions.*;
+import com.roman.exceptions.DepartmentNotFoundException;
+import com.roman.exceptions.EmployeeAlreadyExistsException;
+import com.roman.exceptions.EmployeeNotFoundException;
+import com.roman.exceptions.TwoHeadOfDepartmentException;
 import com.roman.mappers.DepartmentDtoSnapshotMapper;
 import com.roman.repo.DepartmentDtoSnapshotRepo;
 import com.roman.repo.EmployeeRepo;
 import com.roman.resource.feign.DepartmentsFeignClient;
 import com.roman.resource.feign.fallback.exception.FallbackException;
 import com.roman.service.EmployeeServiceImpl;
+import dto.department.DepartmentDto;
+import dto.employee.enums.Gender;
 import org.apache.commons.collections.CollectionUtils;
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -28,9 +35,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

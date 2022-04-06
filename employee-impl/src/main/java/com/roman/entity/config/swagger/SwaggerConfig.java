@@ -1,4 +1,4 @@
-package com.roman.config.swagger;
+package com.roman.entity.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

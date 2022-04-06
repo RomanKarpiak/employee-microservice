@@ -1,11 +1,11 @@
 package com.roman.validator;
 
-import com.roman.dto.EmployeeDto;
 import com.roman.entity.Employee;
-import com.roman.enums.Gender;
 import com.roman.exceptions.EmployeeValidationException;
 import com.roman.exceptions.TwoHeadOfDepartmentException;
 import com.roman.repo.EmployeeRepo;
+import dto.employee.EmployeeDto;
+import dto.employee.enums.Gender;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -22,7 +22,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)

@@ -1,10 +1,10 @@
 package com.roman.validator;
 
-import com.roman.dto.EmployeeDto;
 import com.roman.entity.Employee;
 import com.roman.exceptions.EmployeeValidationException;
 import com.roman.exceptions.TwoHeadOfDepartmentException;
 import com.roman.repo.EmployeeRepo;
+import dto.employee.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,6 @@ import java.time.LocalDate;
 
 @Component
 public class EmployeeDtoValidator {
-
 
     private final EmployeeRepo employeeRepo;
 

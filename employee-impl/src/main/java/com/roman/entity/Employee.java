@@ -1,6 +1,6 @@
 package com.roman.entity;
 
-import com.roman.enums.Gender;
+import dto.employee.enums.Gender;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

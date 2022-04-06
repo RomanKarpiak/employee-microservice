@@ -1,10 +1,10 @@
 package com.roman.service;
 
-import com.roman.config.kafka.ConsumerKafkaProperties;
-import com.roman.dto.DepartmentDto;
+import com.roman.entity.config.kafka.ConsumerKafkaProperties;
 import com.roman.entity.DepartmentDtoSnapshot;
 import com.roman.mappers.DepartmentDtoSnapshotMapper;
 import com.roman.repo.DepartmentDtoSnapshotRepo;
+import dto.department.DepartmentDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

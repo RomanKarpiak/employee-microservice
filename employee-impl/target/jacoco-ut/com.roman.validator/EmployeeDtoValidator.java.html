@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeDtoValidator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">employees-service</a> &gt; <a href="index.source.html" class="el_package">com.roman.validator</a> &gt; <span class="el_source">EmployeeDtoValidator.java</span></div><h1>EmployeeDtoValidator.java</h1><pre class="source lang-java linenums">package com.roman.validator;
 
-import com.roman.dto.EmployeeDto;
 import com.roman.entity.Employee;
 import com.roman.exceptions.EmployeeValidationException;
 import com.roman.exceptions.TwoHeadOfDepartmentException;
 import com.roman.repo.EmployeeRepo;
+import dto.employee.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,59 +13,58 @@ import java.time.LocalDate;
 @Component
 public class EmployeeDtoValidator {
 
-
     private final EmployeeRepo employeeRepo;
 
     @Autowired
-<span class="fc" id="L20">    public EmployeeDtoValidator(EmployeeRepo employeeRepo) {</span>
-<span class="fc" id="L21">        this.employeeRepo = employeeRepo;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L19">    public EmployeeDtoValidator(EmployeeRepo employeeRepo) {</span>
+<span class="fc" id="L20">        this.employeeRepo = employeeRepo;</span>
+<span class="fc" id="L21">    }</span>
 
     public void validate(Object target) {
 
-<span class="fc" id="L26">        EmployeeDto employee = (EmployeeDto) target;</span>
-<span class="fc" id="L27">        Employee headOfDepartment = employeeRepo.findByDepartmentIdAndIsHeadOfDepartmentTrue(employee.getDepartmentId());</span>
-<span class="pc bpc" id="L28" title="1 of 6 branches missed.">        if ((headOfDepartment == null &amp;&amp; employee.isHeadOfDepartment()) &amp;&amp; (employee.getSalary() - getMaxSalaryOfEmployeesOfDepartment(employee) &lt; 0)) {</span>
-<span class="fc" id="L29">            throw new EmployeeValidationException(&quot;The salary of the head cannot be less than the salary of the employee&quot;);</span>
-<span class="pc bpc" id="L30" title="1 of 6 branches missed.">        } else if ((headOfDepartment != null &amp;&amp; !employee.isHeadOfDepartment()) &amp;&amp; (getSalaryOfHeadOfDepartment(employee) - employee.getSalary() &lt; 0)) {</span>
-<span class="fc" id="L31">            throw new EmployeeValidationException(&quot;The salary of an employee may not exceed the salary of the head&quot;);</span>
+<span class="fc" id="L25">        EmployeeDto employee = (EmployeeDto) target;</span>
+<span class="fc" id="L26">        Employee headOfDepartment = employeeRepo.findByDepartmentIdAndIsHeadOfDepartmentTrue(employee.getDepartmentId());</span>
+<span class="pc bpc" id="L27" title="1 of 6 branches missed.">        if ((headOfDepartment == null &amp;&amp; employee.isHeadOfDepartment()) &amp;&amp; (employee.getSalary() - getMaxSalaryOfEmployeesOfDepartment(employee) &lt; 0)) {</span>
+<span class="fc" id="L28">            throw new EmployeeValidationException(&quot;The salary of the head cannot be less than the salary of the employee&quot;);</span>
+<span class="pc bpc" id="L29" title="1 of 6 branches missed.">        } else if ((headOfDepartment != null &amp;&amp; !employee.isHeadOfDepartment()) &amp;&amp; (getSalaryOfHeadOfDepartment(employee) - employee.getSalary() &lt; 0)) {</span>
+<span class="fc" id="L30">            throw new EmployeeValidationException(&quot;The salary of an employee may not exceed the salary of the head&quot;);</span>
         }
-<span class="pc bpc" id="L33" title="2 of 6 branches missed.">        if (headOfDepartment != null &amp;&amp; !headOfDepartment.getEmail().equals(employee.getEmail()) &amp;&amp; employee.isHeadOfDepartment()) {</span>
-<span class="fc" id="L34">            throw new TwoHeadOfDepartmentException();</span>
+<span class="pc bpc" id="L32" title="2 of 6 branches missed.">        if (headOfDepartment != null &amp;&amp; !headOfDepartment.getEmail().equals(employee.getEmail()) &amp;&amp; employee.isHeadOfDepartment()) {</span>
+<span class="fc" id="L33">            throw new TwoHeadOfDepartmentException();</span>
         }
-<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (!dismissalDateValidation(employee)) {</span>
-<span class="fc" id="L37">            throw new EmployeeValidationException(&quot;Dismissal date must be greater than admission date&quot;);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (!dismissalDateValidation(employee)) {</span>
+<span class="fc" id="L36">            throw new EmployeeValidationException(&quot;Dismissal date must be greater than admission date&quot;);</span>
         }
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (!admissionDateValidation(employee)) {</span>
-<span class="fc" id="L40">            throw new EmployeeValidationException(&quot;Admission date must be more than date of birthday&quot;);</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if (!admissionDateValidation(employee)) {</span>
+<span class="fc" id="L39">            throw new EmployeeValidationException(&quot;Admission date must be more than date of birthday&quot;);</span>
         }
 
-<span class="nc" id="L43">    }</span>
+<span class="nc" id="L42">    }</span>
 
     private boolean dismissalDateValidation(EmployeeDto employee) {
-<span class="fc" id="L46">        LocalDate admissionDate = employee.getDateOfAdmission();</span>
-<span class="fc" id="L47">        LocalDate dismissalDate = employee.getDateOfDismissal();</span>
-<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (dismissalDate == null) {</span>
-<span class="fc" id="L49">            return true;</span>
+<span class="fc" id="L45">        LocalDate admissionDate = employee.getDateOfAdmission();</span>
+<span class="fc" id="L46">        LocalDate dismissalDate = employee.getDateOfDismissal();</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (dismissalDate == null) {</span>
+<span class="fc" id="L48">            return true;</span>
         }
-<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        return dismissalDate.isAfter(admissionDate)</span>
-<span class="pc bnc" id="L52" title="All 4 branches missed.">                &amp;&amp; (dismissalDate.isBefore(LocalDate.now()) || dismissalDate.equals(LocalDate.now()));</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        return dismissalDate.isAfter(admissionDate)</span>
+<span class="pc bnc" id="L51" title="All 4 branches missed.">                &amp;&amp; (dismissalDate.isBefore(LocalDate.now()) || dismissalDate.equals(LocalDate.now()));</span>
     }
 
     private boolean admissionDateValidation(EmployeeDto employee) {
-<span class="fc" id="L56">        LocalDate admissionDate = employee.getDateOfAdmission();</span>
-<span class="fc" id="L57">        LocalDate birthday = employee.getBirthday();</span>
-<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        return admissionDate.isAfter(birthday)</span>
-<span class="pc bnc" id="L59" title="All 4 branches missed.">                &amp;&amp; (admissionDate.isBefore(LocalDate.now()) || admissionDate.equals(LocalDate.now()));</span>
+<span class="fc" id="L55">        LocalDate admissionDate = employee.getDateOfAdmission();</span>
+<span class="fc" id="L56">        LocalDate birthday = employee.getBirthday();</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        return admissionDate.isAfter(birthday)</span>
+<span class="pc bnc" id="L58" title="All 4 branches missed.">                &amp;&amp; (admissionDate.isBefore(LocalDate.now()) || admissionDate.equals(LocalDate.now()));</span>
     }
 
 
     private Long getSalaryOfHeadOfDepartment(EmployeeDto employee) {
-<span class="fc" id="L64">        return employeeRepo.getSalaryOfHeadOfDepartment(employee.getDepartmentId());</span>
+<span class="fc" id="L63">        return employeeRepo.getSalaryOfHeadOfDepartment(employee.getDepartmentId());</span>
     }
 
     private Long getMaxSalaryOfEmployeesOfDepartment(EmployeeDto employee) {
-<span class="fc" id="L68">        return employeeRepo.getMaxSalaryOfEmployeesOfDepartment(employee.getDepartmentId());</span>
+<span class="fc" id="L67">        return employeeRepo.getMaxSalaryOfEmployeesOfDepartment(employee.getDepartmentId());</span>
 
     }
 }

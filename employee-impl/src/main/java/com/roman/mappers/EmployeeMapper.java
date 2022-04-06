@@ -1,9 +1,9 @@
 package com.roman.mappers;
 
-import com.roman.dto.EmployeeBriefInfoDto;
-import com.roman.dto.EmployeeDto;
-import com.roman.dto.EmployeeFullInfoDto;
 import com.roman.entity.Employee;
+import dto.employee.EmployeeBriefInfoDto;
+import dto.employee.EmployeeDto;
+import dto.employee.EmployeeFullInfoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

@@ -3,7 +3,7 @@ package com.roman;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.roman.config.kafka.ConsumerKafkaProperties;
+import com.roman.entity.config.kafka.ConsumerKafkaProperties;
 import com.roman.resource.feign.DepartmentsFeignClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.roman.config.kafka;
+package com.roman.entity.config.kafka;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

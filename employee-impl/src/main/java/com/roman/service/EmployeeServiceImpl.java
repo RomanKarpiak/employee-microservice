@@ -1,6 +1,5 @@
 package com.roman.service;
 
-import com.roman.dto.DepartmentDto;
 import com.roman.entity.Employee;
 import com.roman.exceptions.DepartmentNotFoundException;
 import com.roman.exceptions.EmployeeAlreadyExistsException;
@@ -10,6 +9,7 @@ import com.roman.mappers.DepartmentDtoSnapshotMapper;
 import com.roman.repo.DepartmentDtoSnapshotRepo;
 import com.roman.repo.EmployeeRepo;
 import com.roman.resource.feign.DepartmentsFeignClient;
+import dto.department.DepartmentDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
